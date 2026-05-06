@@ -11,6 +11,14 @@ build/
 *.swo
 *~
 
+# Eclipse
+.metadata/
+.settings/
+.project
+.classpath
+.factorypath
+.recommenders/
+
 # OS files
 .DS_Store
 Thumbs.db

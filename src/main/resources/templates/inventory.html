@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Food Truck Inventory</title>
 <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
@@ -81,6 +83,7 @@
 
 		<h2 class="section-title">Inventory</h2>
 
+		<div class="table-container">
 		<table class="data-table">
 			<tr>
 				<th>Name</th>
@@ -155,9 +158,11 @@
 					one above.</td>
 			</tr>
 		</table>
+		</div>
 
 		<!-- ORDERS -->
 		<h2 class="section-title">Orders</h2>
+		<div class="table-container">
 		<table class="data-table">
 			<tr>
 				<th>Item</th>
@@ -211,6 +216,7 @@
 				<td colspan="4" class="empty-state">No orders placed yet.</td>
 			</tr>
 		</table>
+		</div>
 
 		</div>
 		<!-- Close main-content -->
