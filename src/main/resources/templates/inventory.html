@@ -38,18 +38,17 @@
 					<div class="calendar-day-header">Sa</div>
 				</div>
 			</div>
-		</div>
-
-		<!-- Distributor Links Section -->
-		<div class="distributor-links">
-			<h4>🚚 Food Distributors</h4>
-			<ul>
-				<li><a href="https://www.sysco.com" target="_blank" rel="noopener">Sysco</a></li>
-				<li><a href="https://www.usfoods.com" target="_blank" rel="noopener">US Foods</a></li>
-				<li><a href="https://www.gfs.com" target="_blank" rel="noopener">Gordon Food Service</a></li>
-				<li><a href="https://www.restaurantdepot.com" target="_blank" rel="noopener">Restaurant Depot</a></li>
-				<li><a href="https://www.mclanefoodservice.com" target="_blank" rel="noopener">McLane Foodservice</a></li>
-			</ul>
+			<!-- Distributor Links Section -->
+			<div class="distributor-links">
+				<h4>🚚 Food Distributors</h4>
+				<ul>
+					<li><a href="https://www.sysco.com" target="_blank" rel="noopener">Sysco</a></li>
+					<li><a href="https://www.usfoods.com" target="_blank" rel="noopener">US Foods</a></li>
+					<li><a href="https://www.gfs.com" target="_blank" rel="noopener">Gordon Food Service</a></li>
+					<li><a href="https://www.restaurantdepot.com" target="_blank" rel="noopener">Restaurant Depot</a></li>
+					<li><a href="https://www.mclanefoodservice.com" target="_blank" rel="noopener">McLane Foodservice</a></li>
+				</ul>
+			</div>
 		</div>
 
 		<!-- Main Inventory Content -->
@@ -61,28 +60,26 @@
 						<button type="button" onclick="toggleQRScanner()" class="btn btn-qr">📷 Scan QR</button>
 					</div>
 				</div>
-				<button type="button" onclick="toggleQRScanner()" class="btn btn-qr">📷 Scan QR</button>
 			</div>
-		</div>
 
-		<div class="stats-container">
-			<div class="stat-card card-default">
-				<h3>Total Items</h3>
-				<h1 th:text="${totalItems}">0</h1>
+			<div class="stats-container">
+				<div class="stat-card card-default">
+					<h3>Total Items</h3>
+					<h1 th:text="${totalItems}">0</h1>
+				</div>
+				<div class="stat-card card-warning">
+					<h3>Low Stock Items</h3>
+					<h1 th:text="${lowStockCount}">0</h1>
+				</div>
+				<div class="stat-card card-success">
+					<h3>Total Inventory Value</h3>
+					<h1>$<span th:text="${totalInventoryValue}">0.00</span></h1>
+				</div>
+				<div class="stat-card card-info">
+					<h3>Avg Unit Cost</h3>
+					<h1>$<span th:text="${avgUnitCost}">0.00</span></h1>
+				</div>
 			</div>
-			<div class="stat-card card-warning">
-				<h3>Low Stock Items</h3>
-				<h1 th:text="${lowStockCount}">0</h1>
-			</div>
-			<div class="stat-card card-success">
-				<h3>Total Inventory Value</h3>
-				<h1>$<span th:text="${totalInventoryValue}">0.00</span></h1>
-			</div>
-			<div class="stat-card card-info">
-				<h3>Avg Unit Cost</h3>
-				<h1>$<span th:text="${avgUnitCost}">0.00</span></h1>
-			</div>
-		</div>
 
 		<!-- ADD ITEM -->
 		<form th:action="@{/inventory/add}" method="post" id="addItemForm" class="add-item-form">
