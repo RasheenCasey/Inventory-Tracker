@@ -614,3 +614,102 @@ body {
 .card-info h1 {
     color: #667eea;
 }
+
+.add-item-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-item-form input {
+    padding: 10px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 120px;
+}
+
+.add-item-form input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.update-form {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.qty-input {
+    width: 70px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.btn-delete {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-delete:hover {
+    background-color: #e95555;
+}
+
+.order-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.order-btn:hover {
+    background: #5a6fd6;
+}
+
+.low-stock {
+    background: #fff3cd;
+    color: #856404;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.ok-status {
+    background: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.empty-state {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    font-style: italic;
+}
+
+.section-title {
+    margin: 30px 0 15px 0;
+    color: #333;
+    font-size: 1.3rem;
+}
