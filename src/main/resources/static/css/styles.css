@@ -18,22 +18,23 @@ body {
 }
 
 .glass-panel {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .navbar {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
     border-radius: 0 0 15px 15px;
 }
@@ -51,7 +52,7 @@ body {
 }
 
 .nav-links a {
-    color: #555;
+    color: #aaa;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -112,30 +113,32 @@ body {
 }
 
 .sidebar-calendar {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     height: fit-content;
     position: sticky;
     top: 20px;
+    color: #fff;
 }
 
 .sidebar-sales {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     height: fit-content;
     position: sticky;
     top: 20px;
+    color: #fff;
 }
 
 .calendar-container h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: #fff;
     font-size: 1.1rem;
 }
 
@@ -167,7 +170,7 @@ body {
 .calendar-day-header {
     font-size: 0.75rem;
     font-weight: bold;
-    color: #666;
+    color: #aaa;
     padding: 5px;
 }
 
@@ -180,10 +183,11 @@ body {
     cursor: pointer;
     font-size: 0.85rem;
     transition: all 0.2s ease;
+    color: #fff;
 }
 
 .calendar-day:hover {
-    background: #e9ecef;
+    background: #3d3d5c;
 }
 
 .calendar-day.today {
@@ -211,21 +215,22 @@ body {
 }
 
 .calendar-day.other-month {
-    color: #adb5bd;
+    color: #555;
 }
 
 .sales-container h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: #fff;
     font-size: 1.1rem;
 }
 
 .sale-item {
-    background: #f8f9fa;
+    background: #2d2d44;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 10px;
     border-left: 4px solid #667eea;
+    color: #fff;
 }
 
 .sale-badge {
@@ -242,18 +247,18 @@ body {
 .sale-item h4 {
     font-size: 0.95rem;
     margin-bottom: 5px;
-    color: #333;
+    color: #fff;
 }
 
 .sale-item p {
     font-size: 0.85rem;
-    color: #666;
+    color: #aaa;
     margin-bottom: 5px;
 }
 
 .sale-price {
     font-size: 0.8rem;
-    color: #28a745;
+    color: #4ecdc4;
     font-weight: 500;
 }
 
@@ -291,9 +296,10 @@ body {
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: #1e1e2e;
     border-radius: 10px;
     overflow: hidden;
+    color: #fff;
 }
 
 .data-table th {
@@ -306,11 +312,11 @@ body {
 
 .data-table td {
     padding: 15px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid #3d3d5c;
 }
 
 .data-table tr:hover {
-    background: #f8f9fa;
+    background: #2d2d44;
 }
 
 .status-badge {
@@ -322,23 +328,23 @@ body {
 }
 
 .status-low {
-    background: #fff3cd;
-    color: #856404;
+    background: rgba(255, 107, 107, 0.3);
+    color: #ff6b6b;
 }
 
 .status-ok {
-    background: #d4edda;
-    color: #155724;
+    background: rgba(78, 205, 196, 0.3);
+    color: #4ecdc4;
 }
 
 .status-pending {
-    background: #fff3cd;
-    color: #856404;
+    background: rgba(255, 193, 7, 0.3);
+    color: #ffc107;
 }
 
 .status-delivered {
-    background: #d4edda;
-    color: #155724;
+    background: rgba(40, 167, 69, 0.3);
+    color: #28a745;
 }
 
 /* Calendar Comment Modal */
@@ -357,12 +363,12 @@ body {
 }
 
 .calendar-modal-content {
-    background: white;
+    background: #1e1e2e;
     padding: 25px;
     border-radius: 15px;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .calendar-modal-header {
@@ -371,12 +377,12 @@ body {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid #3d3d5c;
 }
 
 .calendar-modal-header h3 {
     margin: 0;
-    color: #333;
+    color: #fff;
     font-size: 1.2rem;
 }
 
@@ -388,18 +394,24 @@ body {
 }
 
 .calendar-close:hover {
-    color: #333;
+    color: #fff;
 }
 
 .comment-textarea {
     width: 100%;
     min-height: 120px;
     padding: 12px;
-    border: 2px solid #e9ecef;
+    background: #2d2d44;
+    border: 2px solid #3d3d5c;
     border-radius: 8px;
     font-size: 1rem;
     resize: vertical;
     margin-bottom: 15px;
+    color: #fff;
+}
+
+.comment-textarea::placeholder {
+    color: #888;
 }
 
 .comment-textarea:focus {
@@ -408,11 +420,12 @@ body {
 }
 
 .existing-comment {
-    background: #f8f9fa;
+    background: #2d2d44;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
     border-left: 4px solid #667eea;
+    color: #fff;
 }
 
 .comment-actions {
@@ -441,6 +454,111 @@ body {
     font-weight: 500;
 }
 
+/* Menu Special Modal */
+.menu-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-modal-content {
+    background: #1e1e2e;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.menu-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+
+.menu-modal-header h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.menu-close {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+}
+
+.menu-close:hover {
+    color: #fff;
+}
+
+.menu-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-form input,
+.menu-form select,
+.menu-form textarea {
+    padding: 12px 15px;
+    background: #2d2d44;
+    border: 2px solid #3d3d5c;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.menu-form input::placeholder,
+.menu-form textarea::placeholder {
+    color: #888;
+}
+
+.menu-form input:focus,
+.menu-form select:focus,
+.menu-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.menu-form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.btn-menu-save {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-menu-cancel {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -454,13 +572,14 @@ body {
 }
 
 .modal-content {
-    background: white;
+    background: #1e1e2e;
     margin: 10% auto;
     padding: 30px;
     border-radius: 15px;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
 
 .modal-header {
@@ -472,7 +591,7 @@ body {
 
 .modal-header h3 {
     margin: 0;
-    color: #333;
+    color: #fff;
 }
 
 .close {
@@ -482,7 +601,7 @@ body {
 }
 
 .close:hover {
-    color: #333;
+    color: #fff;
 }
 
 .form-group {
@@ -501,10 +620,17 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 10px 15px;
-    border: 2px solid #e9ecef;
+    background: #2d2d44;
+    border: 2px solid #3d3d5c;
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    color: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888;
 }
 
 .form-group input:focus,
@@ -529,11 +655,11 @@ body {
 }
 
 .login-box {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     width: 100%;
     max-width: 400px;
 }
@@ -541,7 +667,7 @@ body {
 .login-box h2 {
     text-align: center;
     margin-bottom: 30px;
-    color: #333;
+    color: #fff;
 }
 
 .login-form {
@@ -553,10 +679,16 @@ body {
 .login-form input {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #e9ecef;
+    background: #2d2d44;
+    border: 2px solid #3d3d5c;
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    color: #fff;
+}
+
+.login-form input::placeholder {
+    color: #888;
 }
 
 .login-form input:focus {
@@ -603,11 +735,11 @@ body {
 }
 
 .home-box {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     padding: 50px;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     width: 100%;
     max-width: 600px;
     text-align: center;
@@ -615,12 +747,12 @@ body {
 
 .home-header h1 {
     margin: 0 0 20px 0;
-    color: #333;
+    color: #fff;
     font-size: 2rem;
 }
 
 .home-description {
-    color: #666;
+    color: #aaa;
     font-size: 1.1rem;
     margin-bottom: 30px;
     line-height: 1.6;
@@ -634,20 +766,20 @@ body {
 
 .features {
     text-align: left;
-    background: #f8f9fa;
+    background: #2d2d44;
     padding: 25px;
     border-radius: 15px;
 }
 
 .features h3 {
     margin: 0 0 15px 0;
-    color: #333;
+    color: #fff;
 }
 
 .features ul {
     margin: 0;
     padding-left: 20px;
-    color: #555;
+    color: #aaa;
 }
 
 .features li {
@@ -774,29 +906,29 @@ body {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     min-width: 150px;
 }
 
 .stat-card h3 {
     margin: 0 0 10px 0;
     font-size: 0.9rem;
-    color: #666;
+    color: #aaa;
 }
 
 .stat-card h1 {
     margin: 0;
     font-size: 2rem;
-    color: #333;
+    color: #fff;
 }
 
 .card-default {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
 }
 
 .card-warning {
@@ -832,18 +964,24 @@ body {
     flex-wrap: wrap;
     margin-bottom: 30px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 46, 0.95);
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .add-item-form input {
     padding: 10px 15px;
-    border: 2px solid #e9ecef;
+    background: #2d2d44;
+    border: 2px solid #3d3d5c;
     border-radius: 8px;
     font-size: 0.9rem;
     flex: 1;
     min-width: 120px;
+    color: #fff;
+}
+
+.add-item-form input::placeholder {
+    color: #888;
 }
 
 .add-item-form input:focus {
@@ -861,9 +999,11 @@ body {
 .qty-input {
     width: 70px;
     padding: 5px;
-    border: 1px solid #ddd;
+    background: #2d2d44;
+    border: 1px solid #3d3d5c;
     border-radius: 4px;
     text-align: center;
+    color: #fff;
 }
 
 .btn-delete {
@@ -895,8 +1035,8 @@ body {
 }
 
 .low-stock {
-    background: #fff3cd;
-    color: #856404;
+    background: rgba(255, 107, 107, 0.3);
+    color: #ff6b6b;
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 0.8rem;
@@ -904,8 +1044,8 @@ body {
 }
 
 .ok-status {
-    background: #d4edda;
-    color: #155724;
+    background: rgba(78, 205, 196, 0.3);
+    color: #4ecdc4;
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 0.8rem;
@@ -914,13 +1054,13 @@ body {
 
 .empty-state {
     text-align: center;
-    color: #666;
+    color: #888;
     padding: 30px;
     font-style: italic;
 }
 
 .section-title {
     margin: 30px 0 15px 0;
-    color: #333;
+    color: #fff;
     font-size: 1.3rem;
 }
