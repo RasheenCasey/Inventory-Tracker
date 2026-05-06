@@ -58,6 +58,7 @@
 					<h1>Ingredient Inventory</h1>
 					<div class="header-actions">
 						<button type="button" onclick="toggleQRScanner()" class="btn btn-qr">📷 Scan QR</button>
+						<button type="button" onclick="openAddItemModal()" class="btn btn-add">➕ Add Item</button>
 					</div>
 				</div>
 			</div>
@@ -80,18 +81,6 @@
 					<h1>$<span th:text="${avgUnitCost}">0.00</span></h1>
 				</div>
 			</div>
-
-		<!-- ADD ITEM -->
-		<form th:action="@{/inventory/add}" method="post" id="addItemForm" class="add-item-form">
-			<input type="text" name="name" id="itemName" placeholder="Item name" required />
-			<input type="number" name="quantity" id="itemQty" min="1" placeholder="Quantity" required />
-			<input type="text" name="unit" id="itemUnit" placeholder="Unit" required />
-			<input type="number" name="reorderLevel" id="itemReorder" min="0" placeholder="Reorder level" required />
-			<input type="number" name="price" id="itemPrice" min="0" step="0.01" placeholder="Unit price ($)" required />
-			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-
-			<button type="submit" class="btn btn-primary">Add Item</button>
-		</form>
 
 		<h2 class="section-title">Inventory</h2>
 
@@ -306,7 +295,35 @@
 		</div>
 	</div>
 
+	<!-- Add Item Modal -->
+	<div id="addItemModal" class="modal" onclick="closeAddItemModal()">
+		<div class="modal-content" onclick="event.stopPropagation()">
+			<span class="close" onclick="closeAddItemModal()">×</span>
+			<h3>Add New Item</h3>
+
+			<form th:action="@{/inventory/add}" method="post" id="addItemFormModal">
+				<input type="text" name="name" id="modalItemName" placeholder="Item name" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="number" name="quantity" id="modalItemQty" min="1" placeholder="Quantity" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="text" name="unit" id="modalItemUnit" placeholder="Unit (e.g., lbs, each, case)" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="number" name="reorderLevel" id="modalItemReorder" min="0" placeholder="Reorder level" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="number" name="price" id="modalItemPrice" min="0" step="0.01" placeholder="Unit price ($)" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+				<button type="submit" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Add Item</button>
+			</form>
+		</div>
+	</div>
+
 	<script>
+		function openAddItemModal() {
+			document.getElementById("addItemModal").style.display = "block";
+		}
+
+		function closeAddItemModal() {
+			document.getElementById("addItemModal").style.display = "none";
+			document.getElementById("addItemFormModal").reset();
+		}
+
 		function openOrderModal(button) {
 			const itemId = button.dataset.id;
 			const itemName = button.dataset.name;
@@ -496,16 +513,17 @@
 					if (parts.length >= 5) {
 						const [name, qty, unit, price, reorder] = parts;
 
-						// Fill the form
-						document.getElementById('itemName').value = name;
-						document.getElementById('itemQty').value = qty;
-						document.getElementById('itemUnit').value = unit;
-						document.getElementById('itemPrice').value = price;
-						document.getElementById('itemReorder').value = reorder;
+						// Fill the modal form
+						document.getElementById('modalItemName').value = name;
+						document.getElementById('modalItemQty').value = qty;
+						document.getElementById('modalItemUnit').value = unit;
+						document.getElementById('modalItemPrice').value = price;
+						document.getElementById('modalItemReorder').value = reorder;
 
 						stopQRScanner();
 						closeQRScanner();
-						alert(`Scanned: ${name}\nForm populated! Click "Add Item" to save.`);
+						openAddItemModal();
+						alert(`Scanned: ${name}\nForm populated! Review and click "Add Item" to save.`);
 					} else {
 						alert(`Invalid QR format: expected 5 parts, got ${parts.length}`);
 					}
