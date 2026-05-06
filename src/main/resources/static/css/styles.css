@@ -308,6 +308,42 @@ body {
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
+/* ============================================
+   LOGO STYLES
+   ============================================ */
+
+.home-logo {
+    max-width: 100%;
+    width: 350px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.login-logo {
+    max-width: 100%;
+    width: 280px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.inventory-logo {
+    max-width: 100%;
+    width: 250px;
+    height: auto;
+    display: block;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
 .table-container {
     overflow-x: auto;
 }
