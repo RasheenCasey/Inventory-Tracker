@@ -471,12 +471,20 @@
 			try {
 				console.log("QR Data received:", qrData);
 				
+				// Check if qrData is valid
+				if (!qrData || typeof qrData !== 'string') {
+					console.error("Invalid QR data:", qrData);
+					alert("Invalid QR code data received. Please try scanning again.");
+					return;
+				}
+				
 				// Decode if URL encoded
 				let decodedData = qrData;
 				try {
 					decodedData = decodeURIComponent(qrData);
 				} catch (e) {
 					// If decoding fails, use original
+					console.log("Decode failed, using original");
 				}
 				console.log("Decoded data:", decodedData);
 				
@@ -506,7 +514,8 @@
 				}
 			} catch (e) {
 				console.error("QR scan error:", e);
-				alert(`Error reading QR code: ${e.message}`);
+				const errorMsg = e && e.message ? e.message : "Unknown error";
+				alert(`Error reading QR code: ${errorMsg}`);
 			}
 		}
 
