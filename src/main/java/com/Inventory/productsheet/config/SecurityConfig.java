@@ -33,7 +33,7 @@ public class SecurityConfig {
 				.csrf(csrf -> csrf
 						.ignoringRequestMatchers("/ai/**"))
 				.sessionManagement(session -> session
-						.maximumSessions(1)
+						.maximumSessions(10)
 						.maxSessionsPreventsLogin(false));
 
 		return http.build();
