@@ -134,6 +134,11 @@ body {
     position: sticky;
     top: 20px;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
 }
 
 .calendar-container h3 {
@@ -218,19 +223,26 @@ body {
     color: #555;
 }
 
+.sales-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .sales-container h3 {
     margin-bottom: 15px;
     color: #fff;
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .sale-item {
     background: #2d2d44;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 10px;
     border-left: 4px solid #667eea;
     color: #fff;
+    width: 100%;
 }
 
 .sale-badge {
@@ -278,15 +290,22 @@ body {
 }
 
 .btn-add-sale {
-    width: 100%;
-    background: #28a745;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    padding: 12px;
+    padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
     margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-add-sale:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .table-container {
