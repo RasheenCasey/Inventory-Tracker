@@ -134,14 +134,19 @@
 				<!-- ORDER -->
 				<td>
 					<button class="order-btn"
-						th:attr="data-id=${inventoryItem.id},data-name=${inventoryItem.name}"
+						th:data-id="${inventoryItem.id}"
+						th:data-name="${inventoryItem.name}"
 						onclick="openOrderModal(this)">Order</button>
 				</td>
 
 				<!-- SOFT DELETE -->
 				<td class="action-cell">
 					<button type="button" class="btn-qr-generate"
-						th:attr="data-name=${inventoryItem.name},data-qty=${inventoryItem.quantity},data-unit=${inventoryItem.unit},data-price=${inventoryItem.price},data-reorder=${inventoryItem.reorderLevel}"
+						th:data-name="${inventoryItem.name}"
+						th:data-qty="${inventoryItem.quantity}"
+						th:data-unit="${inventoryItem.unit}"
+						th:data-price="${inventoryItem.price}"
+						th:data-reorder="${inventoryItem.reorderLevel}"
 						onclick="generateQRCode(this)">📱 QR</button>
 					<form th:action="@{/inventory/delete/{id}(id=${inventoryItem.id})}"
 						method="post" onsubmit="return confirm('Delete this item?');" class="inline-form">
