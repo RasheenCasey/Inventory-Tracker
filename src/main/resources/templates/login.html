@@ -7,22 +7,26 @@
 
 <body>
 
-<div class="content">
+<div class="login-container">
     <div class="login-box">
-    <h2>Login</h2>
+        <h2>Login</h2>
 
-    <form th:action="@{/login}" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <form th:action="@{/login}" method="post" class="login-form">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
 
-        <button type="submit" class="btn-login">Sign In</button>
+            <button type="submit" class="btn-login">Sign In</button>
 
-        <!-- Optional error message -->
-        <p th:if="${param.error}" class="error">
-            Invalid username or password
-        </p>
-    </form>
-</div>
+            <!-- Optional error message -->
+            <p th:if="${param.error}" class="error">
+                Invalid username or password
+            </p>
+        </form>
+    </div>
 </div>
 
 </body>
