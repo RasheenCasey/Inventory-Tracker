@@ -488,8 +488,8 @@
 				}
 				console.log("Decoded data:", decodedData);
 				
-				// Expected format: ITEM:name|qty|unit|price|reorder
-				if (decodedData.startsWith("ITEM:")) {
+				// Expected format: ITEM:name|qty|unit|price|reorder (case-insensitive)
+				if (decodedData.toUpperCase().startsWith("ITEM:")) {
 					const parts = decodedData.substring(5).split("|");
 					console.log("Parts:", parts);
 					
