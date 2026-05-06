@@ -89,6 +89,28 @@ public class InventoryServiceImpl implements InventoryService {
         }
     }
 
+    @Override
+    @Transactional
+    public void updateItem(InventoryItem item) {
+        try {
+            if (item == null || item.getId() == null) {
+                throw new IllegalArgumentException("Item and ID cannot be null");
+            }
+            if (item.getName() == null || item.getName().trim().isEmpty()) {
+                throw new IllegalArgumentException("Item name cannot be empty");
+            }
+            if (item.getQuantity() < 0) {
+                throw new IllegalArgumentException("Quantity cannot be negative");
+            }
+            if (item.getPrice() < 0) {
+                throw new IllegalArgumentException("Price cannot be negative");
+            }
+            inventoryRepository.save(item);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update item with ID: " + item.getId(), e);
+        }
+    }
+
     // ---------------- ORDERS ----------------
 
     @Override

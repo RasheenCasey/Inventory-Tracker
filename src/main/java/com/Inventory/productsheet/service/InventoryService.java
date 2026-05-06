@@ -25,5 +25,7 @@ public interface InventoryService {
 	
 	void softDeleteItem(Long id);
 	
+	void updateItem(InventoryItem item);
+	
 	void deleteOrder(Long id);
 }

@@ -108,6 +108,33 @@ public class InventoryController {
 		return "redirect:/inventory";
 	}
 
+	// EDIT INVENTORY ITEM
+	@PostMapping("/inventory/edit")
+	public String editItem(@RequestParam Long id, @RequestParam String name, @RequestParam int quantity,
+			@RequestParam String unit, @RequestParam int reorderLevel, @RequestParam double price,
+			RedirectAttributes redirectAttributes) {
+
+		try {
+			InventoryItem item = inventoryService.getAllItems().stream()
+					.filter(i -> i.getId().equals(id))
+					.findFirst()
+					.orElseThrow(() -> new RuntimeException("Item not found"));
+
+			item.setName(name.trim());
+			item.setQuantity(quantity);
+			item.setUnit(unit.trim());
+			item.setReorderLevel(reorderLevel);
+			item.setPrice(price);
+
+			inventoryService.updateItem(item);
+			redirectAttributes.addFlashAttribute("success", "Item updated successfully");
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("error", "Failed to update item: " + e.getMessage());
+		}
+
+		return "redirect:/inventory";
+	}
+
 	// ---------------- ORDERS ----------------
 
 	@PostMapping("/inventory/order")

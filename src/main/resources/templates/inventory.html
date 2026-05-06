@@ -140,8 +140,16 @@
 						onclick="openOrderModal(this)">Order</button>
 				</td>
 
-				<!-- SOFT DELETE -->
+				<!-- ACTIONS -->
 				<td class="action-cell">
+					<button type="button" class="btn-edit"
+						th:data-id="${inventoryItem.id}"
+						th:data-name="${inventoryItem.name}"
+						th:data-qty="${inventoryItem.quantity}"
+						th:data-unit="${inventoryItem.unit}"
+						th:data-price="${inventoryItem.price}"
+						th:data-reorder="${inventoryItem.reorderLevel}"
+						onclick="openEditModal(this)">✏️ Edit</button>
 					<button type="button" class="btn-qr-generate"
 						th:data-name="${inventoryItem.name}"
 						th:data-qty="${inventoryItem.quantity}"
@@ -314,6 +322,26 @@
 		</div>
 	</div>
 
+	<!-- Edit Item Modal -->
+	<div id="editItemModal" class="modal" onclick="closeEditModal()">
+		<div class="modal-content" onclick="event.stopPropagation()">
+			<span class="close" onclick="closeEditModal()">×</span>
+			<h3>Edit Item</h3>
+
+			<form th:action="@{/inventory/edit}" method="post" id="editItemFormModal">
+				<input type="hidden" name="id" id="editItemId" />
+				<input type="text" name="name" id="editItemName" placeholder="Item name" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="number" name="quantity" id="editItemQty" min="0" placeholder="Quantity" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="text" name="unit" id="editItemUnit" placeholder="Unit (e.g., lbs, each, case)" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="number" name="reorderLevel" id="editItemReorder" min="0" placeholder="Reorder level" required style="width: 100%; padding: 10px; margin-bottom: 12px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="number" name="price" id="editItemPrice" min="0" step="0.01" placeholder="Unit price ($)" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #2d2d44; color: #fff; border: 1px solid #3d3d5c; border-radius: 6px;" />
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+				<button type="submit" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Save Changes</button>
+			</form>
+		</div>
+	</div>
+
 	<script>
 		function openAddItemModal() {
 			document.getElementById("addItemModal").style.display = "block";
@@ -322,6 +350,28 @@
 		function closeAddItemModal() {
 			document.getElementById("addItemModal").style.display = "none";
 			document.getElementById("addItemFormModal").reset();
+		}
+
+		function openEditModal(button) {
+			const itemId = button.dataset.id;
+			const itemName = button.dataset.name;
+			const itemQty = button.dataset.qty;
+			const itemUnit = button.dataset.unit;
+			const itemPrice = button.dataset.price;
+			const itemReorder = button.dataset.reorder;
+
+			document.getElementById("editItemId").value = itemId;
+			document.getElementById("editItemName").value = itemName;
+			document.getElementById("editItemQty").value = itemQty;
+			document.getElementById("editItemUnit").value = itemUnit;
+			document.getElementById("editItemPrice").value = itemPrice;
+			document.getElementById("editItemReorder").value = itemReorder;
+
+			document.getElementById("editItemModal").style.display = "block";
+		}
+
+		function closeEditModal() {
+			document.getElementById("editItemModal").style.display = "none";
 		}
 
 		function openOrderModal(button) {
@@ -548,16 +598,19 @@
 
 		function getMenuSpecials() {
 			const saved = localStorage.getItem('menuSpecials');
-			if (saved) {
+			const hasUserData = localStorage.getItem('menuSpecialsUserData');
+			if (saved && hasUserData) {
 				return JSON.parse(saved);
 			}
-			// First time - save defaults
+			// First time only - save defaults and mark as user data
 			localStorage.setItem('menuSpecials', JSON.stringify(defaultMenuSpecials));
+			localStorage.setItem('menuSpecialsUserData', 'true');
 			return defaultMenuSpecials;
 		}
 
 		function saveMenuSpecials(specials) {
 			localStorage.setItem('menuSpecials', JSON.stringify(specials));
+			localStorage.setItem('menuSpecialsUserData', 'true');
 		}
 
 		function renderMenuSpecials() {
