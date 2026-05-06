@@ -1152,6 +1152,138 @@ body {
 }
 
 /* ============================================
+   QR CODE GENERATOR STYLES
+   ============================================ */
+
+.btn-qr-generate {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+.btn-qr-generate:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(78, 205, 196, 0.3);
+}
+
+.action-cell {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.qr-modal {
+    display: none;
+    position: fixed;
+    z-index: 1003;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-modal-content {
+    background: #1e1e2e;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.qr-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3d3d5c;
+}
+
+.qr-modal-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.qr-close {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+}
+
+.qr-close:hover {
+    color: #fff;
+}
+
+.qr-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-print {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-print:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-close-qr {
+    background: #3d3d5c;
+    color: #aaa;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-close-qr:hover {
+    background: #4d4d6c;
+    color: #fff;
+}
+
+/* Mobile QR button */
+@media (max-width: 768px) {
+    .btn-qr-generate {
+        padding: 5px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .action-cell {
+        flex-direction: column;
+        gap: 3px;
+        align-items: stretch;
+    }
+}
+
+/* ============================================
    MOBILE RESPONSIVE STYLES
    ============================================ */
 

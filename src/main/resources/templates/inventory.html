@@ -94,7 +94,7 @@
 				<th>Reorder Level</th>
 				<th>Status</th>
 				<th>Order</th>
-				<th>Action</th>
+				<th style="min-width: 140px;">Action</th>
 			</tr>
 
 			<!-- ONLY ACTIVE ITEMS -->
@@ -139,9 +139,12 @@
 				</td>
 
 				<!-- SOFT DELETE -->
-				<td>
+				<td class="action-cell">
+					<button type="button" class="btn-qr-generate"
+						th:attr="data-name=${inventoryItem.name},data-qty=${inventoryItem.quantity},data-unit=${inventoryItem.unit},data-price=${inventoryItem.price},data-reorder=${inventoryItem.reorderLevel}"
+						onclick="generateQRCode(this)">📱 QR</button>
 					<form th:action="@{/inventory/delete/{id}(id=${inventoryItem.id})}"
-						method="post" onsubmit="return confirm('Delete this item?');">
+						method="post" onsubmit="return confirm('Delete this item?');" class="inline-form">
 
 						<input type="hidden" th:name="${_csrf.parameterName}"
 							th:value="${_csrf.token}" />
@@ -341,6 +344,29 @@
 		</div>
 	</div>
 
+	<!-- QR Code Generator Modal -->
+	<div id="qrGeneratorModal" class="qr-modal" onclick="closeQRGeneratorModal()">
+		<div class="qr-modal-content" onclick="event.stopPropagation()">
+			<div class="qr-modal-header">
+				<h3>📱 Item QR Code</h3>
+				<span class="qr-close" onclick="closeQRGeneratorModal()">&times;</span>
+			</div>
+			<div class="qr-modal-body">
+				<p id="qrItemName" style="color: #aaa; margin-bottom: 15px; text-align: center;"></p>
+				<div id="qrCodeContainer" style="text-align: center; margin: 20px 0;">
+					<img id="qrCodeImage" src="" alt="QR Code" style="max-width: 250px; border-radius: 10px;">
+				</div>
+				<p style="color: #888; font-size: 0.85rem; text-align: center; margin-bottom: 15px;">
+					Scan this code to auto-fill the add item form
+				</p>
+				<div class="qr-actions">
+					<button onclick="printQRCode()" class="btn-print">🖨️ Print</button>
+					<button onclick="closeQRGeneratorModal()" class="btn-close-qr">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- QR Scanner Library -->
 	<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
@@ -512,6 +538,86 @@
 		// Initialize menu specials on page load
 		document.addEventListener("DOMContentLoaded", renderMenuSpecials);
 
+		// ============================================
+		// QR CODE GENERATION
+		// ============================================
+
+		function generateQRCode(button) {
+			const name = button.getAttribute('data-name');
+			const qty = button.getAttribute('data-qty');
+			const unit = button.getAttribute('data-unit');
+			const price = button.getAttribute('data-price');
+			const reorder = button.getAttribute('data-reorder');
+
+			// Format: ITEM:name|qty|unit|price|reorder
+			const qrData = `ITEM:${name}|${qty}|${unit}|${price}|${reorder}`;
+			
+			// Generate QR using Google Chart API (reliable and free)
+			const qrUrl = `https://chart.googleapis.com/chart?cht=qr&chs=300x300&chld=L|0&chl=${encodeURIComponent(qrData)}`;
+			
+			document.getElementById('qrItemName').textContent = name;
+			document.getElementById('qrCodeImage').src = qrUrl;
+			document.getElementById('qrGeneratorModal').style.display = 'flex';
+		}
+
+		function closeQRGeneratorModal() {
+			document.getElementById('qrGeneratorModal').style.display = 'none';
+		}
+
+		function printQRCode() {
+			const qrImage = document.getElementById('qrCodeImage').src;
+			const itemName = document.getElementById('qrItemName').textContent;
+			
+			const printWindow = window.open('', '_blank');
+			printWindow.document.write(`
+				<html>
+				<head>
+					<title>QR Code - ${itemName}</title>
+					<style>
+						body {
+							font-family: Arial, sans-serif;
+							text-align: center;
+							padding: 20px;
+						}
+						.qr-container {
+							border: 2px dashed #667eea;
+							padding: 20px;
+							display: inline-block;
+							border-radius: 10px;
+						}
+						img {
+							max-width: 300px;
+						}
+						h2 {
+							color: #333;
+							margin-bottom: 10px;
+						}
+						p {
+							color: #666;
+							font-size: 14px;
+						}
+						.label {
+							margin-top: 15px;
+							font-size: 12px;
+							color: #999;
+						}
+					</style>
+				</head>
+				<body>
+					<div class="qr-container">
+						<h2>${itemName}</h2>
+						<img src="${qrImage}" alt="QR Code">
+						<p>Scan to add item to inventory</p>
+						<div class="label">Food Truck Inventory System</div>
+					</div>
+					<script>window.onload = () => { window.print(); window.close(); };</script>
+				</body>
+				</html>
+			`);
+			printWindow.document.close();
+		}
+
+		// ============================================
 		// Calendar JavaScript
 		let currentDate = new Date();
 		let selectedDate = null;
