@@ -427,9 +427,22 @@
 
 		function handleQRScan(qrData) {
 			try {
+				console.log("QR Data received:", qrData);
+				
+				// Decode if URL encoded
+				let decodedData = qrData;
+				try {
+					decodedData = decodeURIComponent(qrData);
+				} catch (e) {
+					// If decoding fails, use original
+				}
+				console.log("Decoded data:", decodedData);
+				
 				// Expected format: ITEM:name|qty|unit|price|reorder
-				if (qrData.startsWith("ITEM:")) {
-					const parts = qrData.substring(5).split("|");
+				if (decodedData.startsWith("ITEM:")) {
+					const parts = decodedData.substring(5).split("|");
+					console.log("Parts:", parts);
+					
 					if (parts.length >= 5) {
 						const [name, qty, unit, price, reorder] = parts;
 
@@ -443,12 +456,15 @@
 						stopQRScanner();
 						closeQRScanner();
 						alert(`Scanned: ${name}\nForm populated! Click "Add Item" to save.`);
+					} else {
+						alert(`Invalid QR format: expected 5 parts, got ${parts.length}`);
 					}
 				} else {
-					alert("Invalid QR code format");
+					alert(`Invalid QR code format. Data received: ${decodedData.substring(0, 50)}...`);
 				}
 			} catch (e) {
-				alert("Error reading QR code");
+				console.error("QR scan error:", e);
+				alert(`Error reading QR code: ${e.message}`);
 			}
 		}
 
