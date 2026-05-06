@@ -557,8 +557,8 @@
 			// Format: ITEM:name|qty|unit|price|reorder
 			const qrData = `ITEM:${name}|${qty}|${unit}|${price}|${reorder}`;
 			
-			// Generate QR using Google Chart API (reliable and free)
-			const qrUrl = `https://chart.googleapis.com/chart?cht=qr&chs=300x300&chld=L|0&chl=${encodeURIComponent(qrData)}`;
+			// Generate QR using QRServer API (free and reliable)
+			const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrData)}`;
 			
 			document.getElementById('qrItemName').textContent = name;
 			document.getElementById('qrCodeImage').src = qrUrl;
