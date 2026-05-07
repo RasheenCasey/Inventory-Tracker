@@ -31,11 +31,9 @@ public class InventoryItem {
 		this.deleted = deleted;
 	}
 
-	// ✅ Required no-arg constructor
+
     public InventoryItem() {
     }
-
-    // ✅ Getters and setters
 
     public Long getId() {
         return id;
