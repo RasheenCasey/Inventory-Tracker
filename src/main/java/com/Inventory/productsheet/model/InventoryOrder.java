@@ -16,15 +16,14 @@ public class InventoryOrder {
     private LocalDateTime orderDate;
     private LocalDateTime deliveryDate;
 
-    // (OPTIONAL BUT STRONGLY RECOMMENDED)
-    // Link order to actual item
+
     private Long itemId;
 
     public Long getId() {
         return id;
     }
 
-    // ✅ Proper setter (you usually DON'T need to call this manually)
+
     public void setId(Long id) {
         this.id = id;
     }
